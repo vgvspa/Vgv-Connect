@@ -17,7 +17,7 @@ export default function DeliveryStatusBadge({ status }) {
         fontWeight: "bold",
       }}
     >
-      {status.toUpperCase()}
+      {(status || "sin estado").toUpperCase()}
     </span>
   );
 }

@@ -1,7 +1,8 @@
+import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
 
-export default function Layout({ children }) {
+export default function Layout() {
   return (
     <div style={{ display: "flex" }}>
       <Sidebar />
@@ -17,7 +18,7 @@ export default function Layout({ children }) {
         <Navbar />
 
         <div style={{ padding: "20px" }}>
-          {children}
+          <Outlet />
         </div>
       </div>
     </div>

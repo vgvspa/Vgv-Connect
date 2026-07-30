@@ -16,7 +16,8 @@ export default function App() {
         <Route element={<Layout />}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/entregas" element={<DeliveriesPage />} />
-          <Route path="/routeplanner" element={<RoutePlanner />} /> {/* nueva ruta */}
+          <Route path="/rutas" element={<RoutePlanner />} />
+          <Route path="/routeplanner" element={<RoutePlanner />} />
         </Route>
       </Routes>
     </BrowserRouter>
