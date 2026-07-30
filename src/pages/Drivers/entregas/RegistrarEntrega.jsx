@@ -8,7 +8,7 @@ export default function RegistrarEntrega() {
 
   const handleSubmit = async (data) => {
     await registrarEntrega(data);
-    navigate("/drivers/entregas/confirmacion");
+    navigate("/entregas/confirmacion");
   };
 
   return (

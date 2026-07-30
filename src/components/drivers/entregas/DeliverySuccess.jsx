@@ -9,7 +9,7 @@ export default function DeliverySuccess() {
           La entrega fue registrada correctamente en el sistema.
         </p>
 
-        <Link to="/drivers">
+        <Link to="/home">
           <button style={styles.button}>Volver al panel</button>
         </Link>
       </div>

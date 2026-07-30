@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
+import { ROLES } from "../../utils/constants";
 
 export default function LoginPage() {
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const [identifier, setIdentifier] = useState(""); // email o celular
   const [password, setPassword] = useState("");     // password o PIN
@@ -21,16 +24,18 @@ export default function LoginPage() {
     const isPhone = /^[0-9]{8,12}$/.test(identifier);
     const isEmail = identifier.includes("@");
 
-    // MVP: lógica temporal sin backend
+    // MVP: rol temporal sin backend (luego vendrá del servidor con el JWT)
     if (isPhone) {
       // Chofer
-      navigate("/entregas");
+      login({ name: identifier, role: ROLES.CHOFER });
+      navigate("/home");
       return;
     }
 
     if (isEmail) {
-      // Programador o Gerencia
-      navigate("/dashboard");
+      // Gerencia / Admin (acceso ilimitado)
+      login({ name: identifier, role: ROLES.ADMIN });
+      navigate("/home");
       return;
     }
 
