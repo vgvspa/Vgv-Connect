@@ -1,8 +1,14 @@
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
 import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
 
 export default function Layout() {
+  const { user } = useAuth();
+
+  // Sin sesión => volver al login
+  if (!user) return <Navigate to="/" replace />;
+
   return (
     <div style={{ display: "flex" }}>
       <Sidebar />
