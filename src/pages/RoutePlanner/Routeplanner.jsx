@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import RouteList from "../components/deliveries/RouteList";
-import MapView from "../components/maps/MapView";
-import DeliveryDetail from "../components/deliveries/DeliveryDetail";
-import { optimizeRoute } from "../api/routes";
+import { useState, useEffect } from "react";
+import RouteList from "../../components/deliveries/RouteList";
+import MapView from "../../components/maps/Mapview";
+import DeliveryDetail from "../../components/deliveries/DeliveryDetail";
+import { getRoutesByDriver, optimizeRoute } from "../../api/routes.api";
 
 export default function Routeplanner() {
   const [routes, setRoutes] = useState([]);
@@ -11,15 +11,15 @@ export default function Routeplanner() {
 
   useEffect(() => {
     // Traer rutas del backend (ejemplo con driverId=123)
-    fetch("/api/routes/driver/123")
-      .then((res) => res.json())
-      .then((data) => setRoutes(data));
+    getRoutesByDriver(123)
+      .then(({ data }) => setRoutes(data))
+      .catch((err) => console.error("Error cargando rutas:", err));
   }, []);
 
   const handleOptimize = async () => {
-    const optimized = await optimizeRoute(123);
-    setRoutes(optimized.routes);
-    setCoordinates(optimized.coordinates);
+    const { data } = await optimizeRoute(123);
+    setRoutes(data.routes);
+    setCoordinates(data.coordinates);
   };
 
   return (
@@ -33,8 +33,8 @@ export default function Routeplanner() {
       <MapView coordinates={coordinates} />
       {selectedRoute && (
         <DeliveryDetail
-          route={selectedRoute}
-          onClose={() => setSelectedRoute(null)}
+          delivery={selectedRoute}
+          onConfirm={() => setSelectedRoute(null)}
         />
       )}
     </div>

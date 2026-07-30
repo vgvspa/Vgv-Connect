@@ -25,18 +25,8 @@ export default function Sidebar() {
             </Link>
           </li>
           <li style={{ marginBottom: "15px" }}>
-            <Link to="/choferes" style={{ color: "#ecf0f1", textDecoration: "none" }}>
-              🚚 Choferes
-            </Link>
-          </li>
-          <li style={{ marginBottom: "15px" }}>
             <Link to="/rutas" style={{ color: "#ecf0f1", textDecoration: "none" }}>
               🛣️ Rutas
-            </Link>
-          </li>
-          <li style={{ marginBottom: "15px" }}>
-            <Link to="/reportes" style={{ color: "#ecf0f1", textDecoration: "none" }}>
-              📊 Reportes
             </Link>
           </li>
         </ul>

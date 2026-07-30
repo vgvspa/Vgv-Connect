@@ -1,6 +1,7 @@
-import React, { createContext, useState } from "react";
+import { createContext, useState } from "react";
 
 // Crear el contexto
+// eslint-disable-next-line react-refresh/only-export-components
 export const AuthContext = createContext();
 
 // Crear el proveedor
